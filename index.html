@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sathish — Creative Front-End Developer · Portfolio #01</title>
+<meta name="description" content="A comic-book portfolio: scroll-scrubbed frame sequences, a kunai cursor and click-to-strike lightning." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Anton&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════ LOADER — ISSUE BOOT ══════════ -->
+<div class="loader" id="loader">
+  <div class="loader__box">
+    <div class="loader__seal" aria-hidden="true"><span>↯</span></div>
+    <p class="loader__kicker">LOADING ISSUE #01</p>
+    <h2 class="loader__title">INKING THE PAGES</h2>
+    <div class="loader__bar"><i id="loaderFill"></i></div>
+    <div class="loader__meta">
+      <span id="loaderMsg">GATHERING FRAMES</span>
+      <span id="loaderPct">00%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ AMBIENT FX LAYERS ══════════ -->
+<div class="paper-grain" aria-hidden="true"></div>
+<div class="halftone" aria-hidden="true"></div>
+<canvas class="fx-canvas fx-canvas--sparks" id="sparkCanvas" aria-hidden="true"></canvas>
+<canvas class="fx-canvas fx-canvas--thunder" id="thunderCanvas" aria-hidden="true"></canvas>
+<div class="fx-flash" id="fxFlash" aria-hidden="true"></div>
+<div class="comic-word" id="comicWord" aria-hidden="true"></div>
+
+<!-- ══════════ KUNAI CURSOR ══════════ -->
+<div class="kunai-cursor" id="kunaiCursor" aria-hidden="true">
+  <img class="kunai-cursor__img" id="kunaiImg" src="cursor-art/idle_00.png" alt="" />
+</div>
+
+<!-- ══════════ FIXED CHROME ══════════ -->
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="Back to the cover">
+    <span class="brand__burst" aria-hidden="true">✦</span>
+    <span class="brand__name" id="brandName">SATHISH</span>
+    <span class="brand__issue">ISSUE #01</span>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#origin">ORIGIN</a>
+    <a href="#about">ABOUT</a>
+    <a href="#work">WORK</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+  <div class="topbar__hint"><span>↯</span> CLICK TO STRIKE</div>
+</header>
+
+<div class="edge edge--left" aria-hidden="true">PORTFOLIO · ISSUE #01 · 2026</div>
+<div class="edge edge--right" aria-hidden="true">FRAME SCRUB · <span id="edgeFrames">139</span> FRAMES</div>
+
+<main id="main">
+
+<!-- ══════════ COVER ══════════ -->
+<section class="cover" id="top">
+  <div class="cover__rays" aria-hidden="true"></div>
+  <div class="cover__dots" aria-hidden="true"></div>
+
+  <div class="cover__inner">
+    <div class="cover__copy">
+      <p class="issue-tag" id="coverKicker">PORTFOLIO · ISSUE #01 · 2026</p>
+      <h1 class="cover__title">
+        <span class="cover__hello">HELLO, I'M</span>
+        <span class="cover__name" id="coverName">SATHISH</span>
+      </h1>
+      <p class="cover__role" id="coverRole">Creative Front-End Developer</p>
+      <p class="cover__tagline" id="coverTagline">I build interfaces that hit like a comic panel.</p>
+
+      <div class="bubble bubble--hero" data-reveal>
+        Scroll down. It gets <b>louder.</b>
+        <i aria-hidden="true"></i>
+      </div>
+
+      <div class="cover__actions">
+        <a class="comic-btn" href="#work"><span>SEE THE WORK</span><b>→</b></a>
+        <a class="comic-btn comic-btn--ghost" href="#about"><span>MEET THE HERO</span><b>↓</b></a>
+      </div>
+    </div>
+
+    <figure class="cover__art panel" data-reveal>
+      <div class="cover__burst" aria-hidden="true">POW!</div>
+      <img src="profile.jpeg" alt="Portrait of Sathish" />
+      <figcaption class="cover__stamp">CREATIVE<br><span>DEV</span></figcaption>
+      <span class="panel__no">FIG. 01</span>
+    </figure>
+  </div>
+
+  <div class="cover__foot">
+    <span class="cover__scroll">↓ &nbsp; SCROLL TO OPEN THE ISSUE</span>
+    <span id="coverPage">PAGE 01 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════ FRAME SEQUENCE 01 — ORIGIN (gaze, 71 frames) ══════════ -->
+<section class="scrub" id="origin" data-dir="gaze" data-count="71" data-label="ORIGIN">
+  <div class="scrub__sticky">
+    <canvas class="scrub__canvas" id="originCanvas"></canvas>
+    <div class="scrub__scrim" aria-hidden="true"></div>
+    <div class="scrub__lines" aria-hidden="true"></div>
+
+    <div class="scrub__chapter">CHAPTER 01 <span>／</span> THE SPARK</div>
+
+    <div class="caps">
+      <div class="cap" data-phase="0">
+        <span class="cap__no">01</span>
+        <h2>THE SPARK</h2>
+        <p>Every build starts with one stubborn idea and a blank page.</p>
+      </div>
+      <div class="cap" data-phase="1">
+        <span class="cap__no">02</span>
+        <h2>FOCUS MODE</h2>
+        <p>The noise drops out. What's left is the thing worth making.</p>
+      </div>
+      <div class="cap" data-phase="2">
+        <span class="cap__no">03</span>
+        <h2>FINDING FORM</h2>
+        <p>Layers, type, motion — slowly turning into a shape.</p>
+      </div>
+      <div class="cap" data-phase="3">
+        <span class="cap__no">04</span>
+        <h2>FULL COLOR</h2>
+        <p>And then it clicks. You can feel it before you can see it.</p>
+      </div>
+    </div>
+
+    <div class="scrub__hud">
+      <span class="hud__label" id="originLabel">ORIGIN</span>
+      <div class="hud__bar"><i id="originBar"></i></div>
+      <span class="hud__frame" id="originFrame">001 / 071</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="content-section about" id="about">
+  <header class="section-head" data-reveal>
+    <span class="section-head__no">02</span>
+    <h2>ORIGIN STORY</h2>
+    <span class="section-head__note">WHO IS THIS GUY?</span>
+  </header>
+
+  <div class="about__grid">
+    <article class="panel panel--bio" data-reveal>
+      <span class="panel__tag">PROFILE</span>
+      <h3 id="bioTitle">PART HUMAN. PART KEYBOARD.</h3>
+      <p id="bioText"></p>
+      <div class="bio__meta">
+        <span id="bioLocation">Based in India</span>
+        <span class="dot">•</span>
+        <span id="bioStatus">Available for new projects</span>
+      </div>
+      <div class="bubble bubble--side">Still shipping. Always learning.<i aria-hidden="true"></i></div>
+    </article>
+
+    <div class="panel panel--stats" id="statsGrid" data-reveal></div>
+  </div>
+</section>
+
+<!-- ══════════ FRAME SEQUENCE 02 — BUILD (rasengan, 33 frames) ══════════ -->
+<section class="scrub scrub--build" id="build" data-dir="rasengan" data-count="33" data-label="THE BUILD">
+  <div class="scrub__sticky">
+    <canvas class="scrub__canvas" id="buildCanvas"></canvas>
+    <div class="scrub__scrim" aria-hidden="true"></div>
+    <div class="scrub__lines" aria-hidden="true"></div>
+
+    <div class="scrub__chapter">CHAPTER 03 <span>／</span> THE BUILD</div>
+
+    <div class="caps caps--right">
+      <div class="cap" data-phase="0">
+        <span class="cap__no">01</span>
+        <h2>ONE PIECE AT A TIME</h2>
+        <p>No magic. Just a lot of small decisions stacked in the right order.</p>
+      </div>
+      <div class="cap" data-phase="1">
+        <span class="cap__no">02</span>
+        <h2>CHARGE UP</h2>
+        <p>Details gather until the whole thing starts to hum.</p>
+      </div>
+      <div class="cap" data-phase="2">
+        <span class="cap__no">03</span>
+        <h2>HOLD IT TOGETHER</h2>
+        <p>Performance, polish and a structure that won't fall over.</p>
+      </div>
+      <div class="cap" data-phase="3">
+        <span class="cap__no">04</span>
+        <h2>SHIPPED</h2>
+        <p>Out of the hands and into the wild. That's the best part.</p>
+      </div>
+    </div>
+
+    <div class="scrub__hud">
+      <span class="hud__label" id="buildLabel">THE BUILD</span>
+      <div class="hud__bar"><i id="buildBar"></i></div>
+      <span class="hud__frame" id="buildFrame">001 / 033</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WORK ══════════ -->
+<section class="content-section work" id="work">
+  <header class="section-head" data-reveal>
+    <span class="section-head__no">04</span>
+    <h2>SELECTED CASES</h2>
+    <span class="section-head__note">FOUR PANELS FROM THE ARCHIVE</span>
+  </header>
+  <div class="work__grid" id="projectGrid"></div>
+</section>
+
+<!-- ══════════ FRAME SEQUENCE 03 — LAUNCH (flash, 35 frames) ══════════ -->
+<section class="scrub scrub--launch" id="launch" data-dir="flash" data-count="35" data-label="THE LAUNCH">
+  <div class="scrub__sticky">
+    <canvas class="scrub__canvas" id="launchCanvas"></canvas>
+    <div class="scrub__scrim" aria-hidden="true"></div>
+    <div class="scrub__lines" aria-hidden="true"></div>
+
+    <div class="scrub__chapter">CHAPTER 05 <span>／</span> THE LAUNCH</div>
+
+    <div class="caps">
+      <div class="cap" data-phase="0">
+        <span class="cap__no">01</span>
+        <h2>BREAK THE FRAME</h2>
+        <p>The last check passes. Time to let go.</p>
+      </div>
+      <div class="cap" data-phase="1">
+        <span class="cap__no">02</span>
+        <h2>WHOOSH</h2>
+        <p>Everything you built moves faster than you can follow.</p>
+      </div>
+      <div class="cap" data-phase="2">
+        <span class="cap__no">03</span>
+        <h2>GO LIVE</h2>
+        <p>It's out there. People are clicking. Somebody says "wow".</p>
+      </div>
+      <div class="cap" data-phase="3">
+        <span class="cap__no">04</span>
+        <h2>DO IT AGAIN</h2>
+        <p>Best part? You get to start with a blank page again.</p>
+      </div>
+    </div>
+
+    <div class="scrub__hud">
+      <span class="hud__label" id="launchLabel">THE LAUNCH</span>
+      <div class="hud__bar"><i id="launchBar"></i></div>
+      <span class="hud__frame" id="launchFrame">001 / 035</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="content-section skills" id="skills">
+  <header class="section-head" data-reveal>
+    <span class="section-head__no">06</span>
+    <h2>POWER SET</h2>
+    <span class="section-head__note">WHAT'S IN THE TOOLBELT</span>
+  </header>
+  <div class="skills__grid" id="skillsGrid"></div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact" id="contact">
+  <div class="contact__burst" aria-hidden="true"></div>
+  <div class="contact__inner">
+    <p class="issue-tag">FINAL PAGE <span>·</span> YOUR TURN</p>
+    <h2 class="contact__title" data-reveal>
+      <span id="contactTitle">LET'S MAKE</span>
+      <em id="contactAccent">SOME NOISE.</em>
+    </h2>
+    <p class="contact__blurb" id="contactBlurb"></p>
+    <a class="comic-btn comic-btn--big" id="contactMail" href="mailto:hello@sathish.dev">
+      <span>SEND A SIGNAL</span><b>↗</b>
+    </a>
+    <div class="contact__socials" id="socialLinks"></div>
+  </div>
+  <footer class="footer">
+    <span>© <span id="footerYear">2026</span> <span id="footerName">SATHISH</span></span>
+    <span>MADE WITH INK, CODE &amp; LIGHTNING</span>
+    <a href="#top">BACK TO COVER ↑</a>
+  </footer>
+</section>
+
+</main>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
